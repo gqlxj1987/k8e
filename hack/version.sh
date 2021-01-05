@@ -40,11 +40,11 @@ fi
 VERSION_CNIPLUGINS="v0.8.6-k3s1"
 
 if [[ -n "$GIT_TAG" ]]; then
-    if [[ ! "$GIT_TAG" =~ ^"$VERSION_K8S"[+-] ]]; then
+    if [[ ! "v$GIT_TAG" =~ ^"$VERSION_K8S"[+-] ]]; then
         echo "Tagged version '$GIT_TAG' does not match expected version '$VERSION_K8S[+-]*'" >&2
         exit 1
     fi
-    VERSION=$GIT_TAG
+    VERSION="v$GIT_TAG"
 else
     VERSION="$VERSION_K8S+k8e-${COMMIT:0:8}$DIRTY"
 fi
